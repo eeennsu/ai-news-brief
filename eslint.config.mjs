@@ -254,6 +254,8 @@ export default defineConfig(
   // node:test의 test()는 Promise를 돌려주지만 러너가 수집하므로 기다리지 않는다
   { files: ['scripts/**/*.test.mts'], rules: { '@typescript-eslint/no-floating-promises': 'off' } },
   { files: ['src/shared/config/**'], rules: { 'no-restricted-syntax': restrict('env') } },
+  // scripts는 shared/config가 없어서 env 읽기를 이 모듈 하나에 모은다
+  { files: ['scripts/lib/env.mts'], rules: { 'no-restricted-syntax': restrict('env') } },
   // 겹치는 조합: 위의 shared/config(env만 품)가 d.ts·stories의 default export 허용을 되돌리지 않게 한다
   {
     files: [
