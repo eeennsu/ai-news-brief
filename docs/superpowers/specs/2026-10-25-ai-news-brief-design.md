@@ -65,7 +65,7 @@
 
 ### 레포
 
-- GitHub 공개 레포 `eeennsu/ai-news-brief`, 로컬 경로 `C:\Users\xxx99\ai-news-brief`
+- GitHub 공개 레포 `eeennsu/ai-news-brief`, 로컬 경로 `C:\Users\xxx99\Documents\GitHub\portfolio\ai-news-brief`
 - 개인 작업이라 윈도우 기준으로 만들되, 맥에서 clone해도 같은 명령으로 돌아가야 한다.
 - 레포 하나에 다음을 다 둔다.
   - Expo 앱
