@@ -6,6 +6,7 @@
     "noImplicitOverride": true,
     "allowImportingTsExtensions": true,
     "erasableSyntaxOnly": true,
+    "types": ["node"],
     "paths": {
       "@app/*": ["./src/_app/*"],
       "@screens/*": ["./src/screens/*"],
