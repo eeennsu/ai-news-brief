@@ -2,6 +2,7 @@ import { useRouter } from 'expo-router';
 import { Pressable, StyleSheet, Text } from 'react-native';
 
 import { useBriefDates, useHeadSha } from '@features/brief';
+import { PushTokenPanel } from '@features/pushToken';
 
 import { COPY } from '@shared/config/copy';
 import { ScreenScroll } from '@shared/ui/ScreenScroll';
@@ -54,6 +55,7 @@ export const ArchiveScreen = () => {
   return (
     <ScreenScroll onRefresh={() => void head.refetch()} refreshing={head.isRefetching}>
       {renderBody()}
+      <PushTokenPanel />
     </ScreenScroll>
   );
 };

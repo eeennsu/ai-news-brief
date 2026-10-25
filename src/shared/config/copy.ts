@@ -21,6 +21,14 @@ export const COPY = {
     noNews: '오늘은 기준에 맞는 새 뉴스가 없다',
     generatedAt: (time: string) => `${time} 생성`,
   },
+  pushToken: {
+    action: '푸시 토큰 보기',
+    loadingLabel: '푸시 토큰을 받는 중',
+    permissionDenied: '알림 권한이 없어 토큰을 받지 못했다. 설정에서 알림을 켠 뒤 다시 누른다',
+    missingProjectId:
+      '앱 설정에 프로젝트 ID가 없어 토큰을 받지 못했다. 설치용 빌드에서 다시 누른다',
+    failed: '푸시 토큰을 받지 못했다. 인터넷 연결을 확인하고 다시 누른다',
+  },
   loadingLabel: '불러오는 중',
   error: {
     title: '브리핑을 불러오지 못했다',
