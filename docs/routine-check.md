@@ -1,5 +1,22 @@
 # 예약 작업 실행 환경 점검
 
+## 판정 (확인일 2026-10-25)
+
+| 항목 | 결과 |
+| --- | --- |
+| WebSearch | 된다 |
+| WebFetch | 환경 네트워크를 Full로 바꾼 뒤 된다. Trusted에서는 `ENOTFOUND`로 막힌다. 사이트가 404·503을 주는 기사도 있어, 지시문은 열리지 않는 기사를 버린다 |
+| main push | 된다(GitHub 프록시 경유) |
+| exp.host | Full에서 HTTP 200. Trusted에서는 빈 응답 |
+| Node·pnpm | node v22.22.0, pnpm 10.28.0, corepack 0.34.0. 22.18 이상이라 `.mts`를 바로 실행한다 |
+| cron | 예약 작업 API의 `cron_expression`은 UTC 5필드이고 최소 간격은 1시간이다. 요일 지정(`1-5`)도 된다. 평일 7:37 KST는 `37 22 * * 0-4`다. 세션 시계도 UTC다(TZ 미설정) |
+| 소요 시간 | 점검 작업은 시작부터 끝까지 30초 남짓이다. 본 실행은 Task 9에서 잰다 |
+| 환경 | `기본값`(env_01F5XiBBGotNZAtEYvaba9Vy), 네트워크 Full |
+
+WebSearch는 날짜를 넣지 않으면 몇 년 전 기사를 앞에 준다(아래 2차 점검의 2023년 기사). 지시문의 검색어에는 날짜를 넣고, 발행 시각은 `validateBrief.mts`가 다시 거른다.
+
+## 1차 점검
+
 | # | 항목 | 결과 |
 |---|------|------|
 | 1 | 시작 시각 | `date -u`: Sun Oct 25 03:27:56 UTC 2026 / `date`: Sun Oct 25 03:27:56 UTC 2026 / TZ: unset |
