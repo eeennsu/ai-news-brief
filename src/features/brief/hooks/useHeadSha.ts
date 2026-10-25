@@ -15,6 +15,8 @@ export const useHeadSha = (hint?: string) => {
     staleTime: HEAD_STALE_MS,
     gcTime: HEAD_GC_MS,
     enabled: !hint,
+    // 복귀 때 fresh여도 다시 읽는다. 재조회가 TodayScreen을 리렌더해 오늘 날짜도 다시 계산된다.
+    refetchOnWindowFocus: 'always',
   });
   return { sha: hint ?? query.data, query };
 };

@@ -1,6 +1,7 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { focusManager, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import { AppState } from 'react-native';
 
 import { ApiError } from '@shared/api/ApiError';
 import { COPY } from '@shared/config/copy';
@@ -14,6 +15,14 @@ const shouldRetry = (failureCount: number, error: Error) =>
   failureCount < 1 &&
   error instanceof ApiError &&
   (error.status === HTTP_TOO_MANY_REQUESTS || error.status >= HTTP_SERVER_ERROR);
+
+// RN에는 window focus 이벤트가 없어 앱이 활성 상태로 돌아올 때를 focusManager에 알려 준다.
+focusManager.setEventListener((handleFocus) => {
+  const subscription = AppState.addEventListener('change', (status) => {
+    handleFocus(status === 'active');
+  });
+  return () => subscription.remove();
+});
 
 const queryClient = new QueryClient({ defaultOptions: { queries: { retry: shouldRetry } } });
 
