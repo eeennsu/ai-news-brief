@@ -67,7 +67,9 @@ export const sendPush = async (
   const [ticket] = responseSchema.parse(await response.json()).data;
   if (ticket.status === 'error') {
     const code = ticket.details?.error;
-    throw new Error(`Expo Push ticket 오류${code ? ` ${code}` : ''}: ${ticket.message}`);
+    // Expo가 오류 message에 토큰을 그대로 넣어 돌려주므로 로그에 남기 전에 가린다.
+    const safeMessage = ticket.message.replaceAll(message.to, '[토큰]');
+    throw new Error(`Expo Push ticket 오류${code ? ` ${code}` : ''}: ${safeMessage}`);
   }
   return ticket.id;
 };

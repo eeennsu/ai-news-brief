@@ -90,3 +90,20 @@ test('HTTP 오류면 throw한다', async () =>
   assert.rejects(sendPush(msg, reply({ errors: [{ message: 'x' }] }, 500)), /500/));
 test('2xx인데 응답 형식이 다르면 throw한다', async () =>
   assert.rejects(sendPush(msg, reply({ data: [] }))));
+test('error ticket 메시지에 토큰이 있으면 가린다', async () => {
+  const error = await sendPush(
+    msg,
+    reply({
+      data: [
+        {
+          status: 'error',
+          message: '"ExponentPushToken[x]" is not a valid Expo push token',
+          details: { error: 'DeviceNotRegistered' },
+        },
+      ],
+    }),
+  ).catch((e: unknown) => e);
+  assert.ok(error instanceof Error);
+  assert.ok(!error.message.includes('ExponentPushToken[x]'));
+  assert.ok(error.message.includes('DeviceNotRegistered'));
+});
