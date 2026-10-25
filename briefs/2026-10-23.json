@@ -1,0 +1,105 @@
+{
+  "date": "2026-10-23",
+  "generatedAt": "2026-10-23T07:37:00+09:00",
+  "items": [
+    {
+      "title": "Meta shares fall 7% on huge spending plans",
+      "summary": "메타의 3분기 매출은 646억 달러로 시장 예상(633억 달러)을 웃돌았지만 설비투자가 349억 달러에 달해 잉여현금흐름이 21억 달러 적자로 돌아섰다. 올해 설비투자 하단은 1,300억 달러에서 1,350억 달러로 올랐고, 의결권 없는 클래스 C 주식을 발행하겠다고 밝혔다. 주가는 22일 약 7% 하락했다.",
+      "source": "investingLive",
+      "url": "https://investinglive.com/stocks/meta-shares-fall-7-on-huge-spending-plans/",
+      "publishedAt": "2026-10-23T01:53:00+09:00",
+      "stocks": [
+        {
+          "market": "US",
+          "ticker": "META",
+          "name": "메타 플랫폼스",
+          "verdict": "negative",
+          "strength": "medium",
+          "reason": "매출은 예상을 웃돌았지만 잉여현금흐름이 적자로 돌아서고 설비투자 하단이 올랐다.",
+          "watch": null
+        }
+      ]
+    },
+    {
+      "title": "Lam Research Sinks 9% as Supply Constraints Cap Outlook; Applied Materials Drops 6%, ASML Holding Falls 4%",
+      "summary": "램리서치의 회계연도 1분기 매출은 82억 2천만 달러로 예상을 웃돌았지만, 12월 분기 매출 전망이 86억 달러 안팎에 그쳤다. 최고재무책임자는 단기 공급망 제약이 없었다면 전망이 더 높았을 것이라고 밝혔다. 22일 장 초반 램리서치가 9% 내렸고 어플라이드 머티어리얼즈는 6%, ASML은 4% 내렸다.",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/lam-research-sinks-9-supply-144450114.html",
+      "publishedAt": "2026-10-22T23:44:00+09:00",
+      "stocks": [
+        {
+          "market": "US",
+          "ticker": "LRCX",
+          "name": "램리서치",
+          "verdict": "negative",
+          "strength": "medium",
+          "reason": "공급망 제약으로 12월 분기 매출 전망이 눌려 주가가 장 초반 9% 내렸다.",
+          "watch": null
+        },
+        {
+          "market": "US",
+          "ticker": "AMAT",
+          "name": "어플라이드 머티어리얼즈",
+          "verdict": "negative",
+          "strength": "weak",
+          "reason": "램리서치 전망 여파로 장 초반 6% 내렸다.",
+          "watch": null
+        },
+        {
+          "market": "US",
+          "ticker": "ASML",
+          "name": "ASML",
+          "verdict": "negative",
+          "strength": "weak",
+          "reason": "같은 업종 약세로 장 초반 4% 내렸다.",
+          "watch": null
+        }
+      ]
+    },
+    {
+      "title": "Nebius Declines 6% Despite Fresh Citi Financing; CoreWeave Drops 5%, Cloudflare Edges Higher",
+      "summary": "네비우스는 데이터센터 개발과 GPU 구매 자금으로 씨티의 신용 한도를 10월 22일 발표했지만 같은 날 오전 장에서 6% 내렸다. 한도 만기가 1년이 채 안 남아 대체 자금을 구할 시간이 짧다는 지적이 나온다. 코어위브도 5% 내려 부채로 키우는 네오클라우드에 대한 경계가 이어졌다.",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/nebius-declines-6-despite-fresh-144729703.html",
+      "publishedAt": "2026-10-22T23:47:00+09:00",
+      "stocks": [
+        {
+          "market": "US",
+          "ticker": "NBIS",
+          "name": "네비우스 그룹",
+          "verdict": "negative",
+          "strength": "medium",
+          "reason": "씨티 신용 한도를 확보했지만 만기가 1년이 채 안 돼 주가는 6% 내렸다.",
+          "watch": null
+        },
+        {
+          "market": "US",
+          "ticker": "CRWV",
+          "name": "코어위브",
+          "verdict": "negative",
+          "strength": "weak",
+          "reason": "부채 기반 AI 인프라 성장에 대한 회의가 겹치며 오전 장에서 5% 내렸다.",
+          "watch": null
+        }
+      ]
+    },
+    {
+      "title": "Nokia Corporation Interim Report for Q3 2026",
+      "summary": "노키아의 3분기 AI·클라우드 고객 매출은 6억 3,100만 유로로 환율 불변 기준 123% 늘었고 수주는 118% 늘었다. 비교 영업이익은 6억 500만 유로, 영업이익률은 11.7%로 2.2%포인트 올랐다. 올해 비교 영업이익 전망(21억~26억 유로)은 그대로 유지했다.",
+      "source": "Nokia",
+      "url": "https://www.sec.gov/Archives/edgar/data/0000924613/000110465926117972/tm2628115d1_6k.htm",
+      "publishedAt": "2026-10-22T14:00:00+09:00",
+      "stocks": [
+        {
+          "market": "US",
+          "ticker": "NOK",
+          "name": "노키아",
+          "verdict": "positive",
+          "strength": "medium",
+          "reason": "AI·클라우드 매출이 123% 늘고 영업이익률이 올랐으며 연간 전망은 유지했다.",
+          "watch": null
+        }
+      ]
+    }
+  ]
+}
