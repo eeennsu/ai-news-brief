@@ -7,7 +7,7 @@
 1. 예약 작업 `ai-news-brief`가 평일 07:37 KST(cron `37 22 * * 0-4`, UTC)에 클라우드 환경 `ai-news-brief`에서 돈다. 모델은 claude-sonnet-5-5다.
 2. 에이전트가 `prompts/daily-brief.md`를 따라 `scripts/context.mts`로 날짜와 직전 브리핑을 읽고, 기사를 찾아 `briefs/<date>.json`을 쓴다.
 3. `scripts/validateBrief.mts`로 검증하고 main에 커밋·push한 뒤 `scripts/sendPush.mts`가 Expo 푸시를 보낸다. 9:00 KST가 지나면 알림은 보내지 않는다.
-4. 앱은 푸시에 실린 커밋 SHA로 고정한 GitHub raw URL에서 브리핑을 읽는다.
+4. 앱은 알림으로 열면 푸시에 실린 SHA, 그냥 열면 main 최신 SHA로 고정한 GitHub raw URL에서 브리핑을 읽는다.
 
 `context.mts`는 주말과 `data/krx-holidays.json`의 휴장일을 개장일이 아닌 날로 처리한다. 이런 날은 파일도 커밋도 알림도 만들지 않는다.
 
@@ -23,7 +23,7 @@ pnpm typecheck
 
 ## 종목과 선별 기준 고치기
 
-- 보유·관심 종목은 `config/watchlist.json`의 `holdings`와 `interests`다.
+- 보유·관심 종목은 `config/watchlist.json`의 `holdings`와 `interests`다. 항목은 `{ "market": "KR", "ticker": "005930", "name": "삼성전자" }` 꼴이다. `ticker`는 KR이면 숫자 6자리, US면 대문자 1~5자(`BRK.B` 허용)다. 형식이 틀리면 다음 실행에서 `context.mts`가 멈추니, 고친 뒤 레포 루트에서 `node scripts/context.mts`로 확인하고 push한다.
 - 어떤 뉴스를 넣고 뺄지는 `prompts/daily-brief.md`다.
 
 둘 다 Claude Code에 시켜서 고쳐도 된다. 예약 작업이 main을 읽으므로 push해야 다음 실행부터 반영된다.
@@ -38,18 +38,21 @@ pnpm typecheck
 
 예약 작업 실행 기록과 로그를 먼저 본다: https://claude.ai/code/routines/trig_01AgZaGBcoBYenkNnSXF7dQc
 
-의심할 만한 원인은 다음과 같다.
+흔히 이런 경우다.
 
 - 휴장일이나 주말이라 건너뛰었다.
 - 휴장일 목록이 올해를 덮지 않아 멈췄다.
+- `config/watchlist.json` 형식 오류로 멈췄다.
 - 실행이 늦어 9:00 KST를 넘겨 알림을 생략했다.
+- 푸시 토큰이 무효가 됐다(`DeviceNotRegistered`). 앱을 지웠다 다시 깔면 토큰이 바뀌니, 앱의 "푸시 토큰 보기"로 다시 받아 클라우드 환경 변수 `EXPO_PUSH_TOKEN`을 바꾼다.
 
 ## 앱 다시 빌드하기
 
 `expo-notifications`에 필요한 네이티브 모듈이 Expo Go에 없어서 Expo Go로는 앱이 돌지 않는다. 기기 확인은 APK로만 한다.
 
+변경을 커밋한 뒤 빌드한다.
+
 ```bash
-git commit    # 먼저 커밋한다
 pnpm dlx eas-cli build -p android --profile preview
 ```
 
