@@ -7,9 +7,9 @@ const googleServicesFile = z
   .default('./google-services.json')
   .parse(process.env.GOOGLE_SERVICES_JSON);
 
-// extra.eas.projectId는 `eas init` 뒤에 채운다. 없으면 푸시 토큰 발급이 오류 문구로 멈춘다.
 const config: ExpoConfig = {
   name: 'ai-news-brief',
+  owner: 'eunsu123123',
   slug: 'ai-news-brief',
   scheme: 'ainewsbrief',
   version: '1.0.0',
@@ -29,6 +29,7 @@ const config: ExpoConfig = {
     predictiveBackGestureEnabled: false,
   },
   plugins: ['expo-router', 'expo-status-bar', 'expo-notifications'],
+  extra: { eas: { projectId: '93a7d405-6cf2-4092-ba76-8d931cb5cfc0' } },
 };
 
 export default config;
