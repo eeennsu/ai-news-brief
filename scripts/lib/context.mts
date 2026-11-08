@@ -29,5 +29,21 @@ export const findPreviousDate = (names: string[], date: string): string | null =
     .sort()
     .at(-1) ?? null;
 
-export const getSince = (previousGeneratedAt: string | null, now: string): string =>
-  previousGeneratedAt ?? toKst(now).subtract(SINCE_FALLBACK_HOURS, 'hour').format();
+// 직전 브리핑이 오래돼도(첫 실행 등) 검색 창이 직전 개장일 00:00 KST보다 길어지지 않게 하는 하한이다.
+const getPreviousTradingDayStart = (now: string, holidays: Holidays) => {
+  let day = toKst(now).startOf('day').subtract(1, 'day');
+  while (!getTradingDay(day.format('YYYY-MM-DD'), holidays).tradingDay) {
+    day = day.subtract(1, 'day');
+  }
+  return day;
+};
+
+export const getSince = (
+  previousGeneratedAt: string | null,
+  now: string,
+  holidays: Holidays,
+): string => {
+  const since = previousGeneratedAt ?? toKst(now).subtract(SINCE_FALLBACK_HOURS, 'hour').format();
+  const lowerBound = getPreviousTradingDayStart(now, holidays);
+  return dayjs(since).isBefore(lowerBound) ? lowerBound.format() : since;
+};

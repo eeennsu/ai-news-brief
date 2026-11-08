@@ -53,7 +53,7 @@ stdout은 JSON이다.
 
 - `tradingDay`가 `false`면 브리핑을 만들지 않는다. 파일도 커밋도 알림도 없이 "휴장일 또는 주말이라 건너뛴다(`reason`)"를 출력하고 끝낸다.
 - 명령이 0이 아닌 종료 코드로 끝나면(휴장일 목록이 올해를 덮지 않는 경우 포함) 오류 메시지를 그대로 출력하고 멈춘다. 개장일로 추측하지 않는다.
-- `since`보다 늦게 발행된 기사만 쓴다. `previous`가 `null`이면 `since`는 24시간 전이다.
+- `since`보다 늦게 발행된 기사만 쓴다. `since`는 직전 브리핑의 생성 시각이고, `previous`가 `null`이면 24시간 전이다. 직전 브리핑이 직전 개장일 00:00 KST보다 오래됐으면(첫 실행이나 오래 쉰 뒤) 스크립트가 `since`를 직전 개장일 00:00 KST로 잘라 주니, 계산하지 말고 출력된 값을 그대로 쓴다.
 - `previous.urls`에 있는 기사는 이미 실렸으니 쓰지 않는다.
 - `previous`가 있으면 `briefs/<previous.date>.json`을 Read로 열어 실린 사건의 `title`과 `summary`를 읽어 둔다. 4단계에서 같은 사건의 다른 URL 기사를 걸러 내는 데 쓴다.
 - `watchlist`의 `holdings`는 보유 종목, `interests`는 관심 종목이다.

@@ -2,9 +2,14 @@ import { WATCH } from '../../src/entities/brief/contracts.ts';
 import type { Brief, Stock } from '../../src/entities/brief/types.ts';
 import { dayjs } from '../../src/shared/lib/dayjs.ts';
 import { getSince } from './context.mts';
-import type { Watchlist } from './schemas.mts';
+import type { Holidays, Watchlist } from './schemas.mts';
 
-type CheckContext = { previous: Brief | null; watchlist: Watchlist; now: string };
+type CheckContext = {
+  previous: Brief | null;
+  watchlist: Watchlist;
+  holidays: Holidays;
+  now: string;
+};
 
 const isSameStock = (a: Stock, b: { market: string; ticker: string }) =>
   a.market === b.market && a.ticker === b.ticker;
@@ -18,7 +23,7 @@ const expectedWatch = (stock: Stock, watchlist: Watchlist): Stock['watch'] => {
 
 export const checkBrief = (brief: Brief, ctx: CheckContext): string[] => {
   const errors: string[] = [];
-  const since = getSince(ctx.previous?.generatedAt ?? null, brief.generatedAt);
+  const since = getSince(ctx.previous?.generatedAt ?? null, brief.generatedAt, ctx.holidays);
   const previousUrls = new Set(ctx.previous?.items.map((item) => item.url));
   const seenUrls = new Set<string>();
   let seenNonHolding = false;
@@ -31,7 +36,9 @@ export const checkBrief = (brief: Brief, ctx: CheckContext): string[] => {
     const at = `items[${i}]`;
 
     if (dayjs(item.publishedAt).isBefore(since)) {
-      const basis = ctx.previous ? '직전 브리핑 생성 시각' : '생성 시각 24시간 전';
+      const basis = ctx.previous
+        ? '직전 브리핑 생성 시각 또는 직전 개장일 00:00'
+        : '생성 시각 24시간 전';
       errors.push(`${at}.publishedAt: ${basis}(${since}) 이전 기사다`);
     }
     if (dayjs(item.publishedAt).isAfter(ctx.now)) {

@@ -33,14 +33,15 @@ if (!process.argv.includes('--ignore-cutoff') && isPastCutoff(nowKst().format())
   process.exit(0);
 }
 
-// 방금 push했으므로 fetch 없이 로컬 origin/main을 믿는다. 앱은 이 SHA의 raw URL에서 파일을 받는다.
+// 클라우드 clone의 refspec에 따라 origin/main이 갱신되지 않을 수 있어, fetch한 FETCH_HEAD를 쓴다. 앱은 이 SHA의 raw URL에서 파일을 받는다.
 const remoteFile = `briefs/${basename(path ?? '')}`;
 try {
-  git('cat-file', '-e', `origin/main:${remoteFile}`);
+  git('fetch', 'origin', 'main');
+  git('cat-file', '-e', `FETCH_HEAD:${remoteFile}`);
 } catch {
   fail('origin/main에 브리핑이 없다. push를 확인한다');
 }
-const sha = git('rev-parse', 'origin/main');
+const sha = git('rev-parse', 'FETCH_HEAD');
 
 try {
   const ticketId = await sendPush(buildPushMessage(brief, getPushToken(), sha));

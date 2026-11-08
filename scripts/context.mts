@@ -23,7 +23,7 @@ const context = {
   now: now.format(),
   date,
   ...trading,
-  since: getSince(previousBrief?.generatedAt ?? null, now.format()),
+  since: getSince(previousBrief?.generatedAt ?? null, now.format(), holidays),
   previous: previousBrief && {
     date: previousBrief.date,
     generatedAt: previousBrief.generatedAt,

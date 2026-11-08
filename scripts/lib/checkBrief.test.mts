@@ -38,7 +38,13 @@ const previous: Brief = {
   generatedAt: '2026-10-23T07:40:00+09:00',
   items: [item({ url: 'https://example.com/old', publishedAt: '2026-10-23T06:00:00+09:00' })],
 };
-const ctx = { previous, watchlist, now: '2026-10-26T07:50:00+09:00' };
+const holidays = {
+  source: 'https://open.krx.co.kr',
+  checkedAt: '2026-10-25',
+  years: [2026],
+  dates: [],
+};
+const ctx = { previous, watchlist, holidays, now: '2026-10-26T07:50:00+09:00' };
 const holding = stock({ ticker: 'NVDA', name: '엔비디아', watch: 'holding' });
 
 test('규칙에 맞으면 오류가 없다', () => assert.deepEqual(checkBrief(brief([item()]), ctx), []));

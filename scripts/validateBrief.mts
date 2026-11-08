@@ -6,7 +6,7 @@ import { nowKst } from '../src/shared/lib/dayjs.ts';
 import { checkBrief } from './lib/checkBrief.mts';
 import { findPreviousDate } from './lib/context.mts';
 import { BRIEFS_DIR, listBriefNames, readJson } from './lib/files.mts';
-import { watchlistSchema } from './lib/schemas.mts';
+import { holidaysSchema, watchlistSchema } from './lib/schemas.mts';
 
 const fail = (lines: string[]): never => {
   process.stdout.write(`${lines.join('\n')}\n`);
@@ -49,8 +49,9 @@ const previous = (() => {
 })();
 
 const watchlist = readJson('config/watchlist.json', watchlistSchema);
+const holidays = readJson('data/krx-holidays.json', holidaysSchema);
 
-const errors = checkBrief(brief, { previous, watchlist, now: nowKst().format() });
+const errors = checkBrief(brief, { previous, watchlist, holidays, now: nowKst().format() });
 if (basename(path ?? '') !== `${brief.date}.json`) {
   errors.unshift(`date: 파일 이름(${basename(path ?? '')})과 date(${brief.date})가 다르다`);
 }
