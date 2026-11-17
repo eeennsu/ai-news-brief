@@ -1,0 +1,69 @@
+{
+  "date": "2026-11-18",
+  "generatedAt": "2026-11-18T07:37:41+09:00",
+  "items": [
+    {
+      "title": "Stock Market Today, Nov. 17: Nvidia Slides Ahead of Earnings but Soars in After Hours Trading",
+      "summary": "엔비디아가 17일(현지) 장 마감 후 3분기(회계 2027) 매출 1,158억 달러(전년 대비 103% 증가), 데이터센터 매출 1,076억 달러를 발표했고 4분기 매출은 약 1,300억 달러로 전망해 월가 예상을 웃돌았다. 정규장에서는 0.44% 하락한 155.46달러로 마감했으며 시간외에서는 초반 1.3% 올랐다. 젠슨 황이 12일 CEO에서 사임해 CFO 콜레트 크레스가 임시 CEO로 실적을 발표한 첫 분기다.",
+      "source": "The Motley Fool",
+      "url": "https://www.fool.com/coverage/stock-market-today/2026/11/17/stock-market-today-nov-17-nvidia-slides-ahead-of-earnings-but-soars-in-after-hours-trading/",
+      "publishedAt": "2026-11-18T07:03:00+09:00",
+      "stocks": [
+        {
+          "market": "US",
+          "ticker": "NVDA",
+          "name": "엔비디아",
+          "verdict": "positive",
+          "strength": "strong",
+          "reason": "매출·데이터센터 매출이 증가했고 4분기 가이던스가 시장 예상을 웃돌았다. 시간외 초반 1.3% 상승했다.",
+          "watch": null
+        },
+        {
+          "market": "KR",
+          "ticker": "000660",
+          "name": "SK하이닉스",
+          "verdict": "positive",
+          "strength": "medium",
+          "reason": "엔비디아 HBM 주 공급사라 데이터센터 수요와 가이던스 상향의 수혜가 예상된다.",
+          "watch": null
+        },
+        {
+          "market": "KR",
+          "ticker": "005930",
+          "name": "삼성전자",
+          "verdict": "positive",
+          "strength": "weak",
+          "reason": "엔비디아 AI 가속기에 들어가는 HBM 공급사 중 하나다.",
+          "watch": null
+        }
+      ]
+    },
+    {
+      "title": "Microsoft pushes its own AI models at Ignite; OpenAI is 10.8% of its revenue",
+      "summary": "마이크로소프트가 17일(현지) Ignite에서 코딩 모델 Code 2와 저가형 Code 2 Flash를 공개하고, 자체 칩 Maia 300이 GPU 기반 시스템 대비 와트당 토큰 처리량이 40% 높다고 밝혔다. 직전 분기 매출 923억 달러 중 OpenAI 비중이 10.8%(100억 달러)이고 설비투자는 394억 달러로 전년의 약 2배였다. 이날 오후 거래에서 주가는 2.3% 하락해 나스닥100 펀드 하락폭(1.2%)보다 컸다.",
+      "source": "Techi",
+      "url": "https://www.techi.com/microsoft-ignite-mai-code-2-openai-revenue-share/",
+      "publishedAt": "2026-11-18T04:49:00+09:00",
+      "stocks": [
+        {
+          "market": "US",
+          "ticker": "MSFT",
+          "name": "마이크로소프트",
+          "verdict": "negative",
+          "strength": "medium",
+          "reason": "OpenAI 의존도(매출 10.8%)와 설비투자 급증이 부각되며 오후 거래에서 2.3% 하락했다.",
+          "watch": null
+        },
+        {
+          "market": "US",
+          "ticker": "NVDA",
+          "name": "엔비디아",
+          "verdict": "negative",
+          "strength": "weak",
+          "reason": "마이크로소프트가 자체 Maia 300이 GPU 기반 시스템보다 와트당 토큰 처리량이 높다고 주장해 자체 칩 경쟁이 부각됐다.",
+          "watch": null
+        }
+      ]
+    }
+  ]
+}
